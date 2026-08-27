@@ -62,20 +62,26 @@ function applyLinks() {
   });
 }
 
-/* --- 到達フェードイン --- */
+/* --- 到達フェードイン ---
+   IntersectionObserverは発火しない環境があり本文が不可視のまま残るため使わない
+   （K2サイトで実際に発生・2026-07-30の教訓）。判定は「上端が画面に入ったか」のみ。 */
 function initFadeUp() {
-  const targets = document.querySelectorAll('.fade-up');
-  if (!targets.length || !('IntersectionObserver' in window)) {
-    targets.forEach((t) => t.classList.add('is-visible'));
-    return;
-  }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
+  let pending = Array.from(document.querySelectorAll('.fade-up'));
+  if (!pending.length) return;
+  function check() {
+    if (!pending.length) return;
+    const vh = window.innerHeight;
+    if (!vh) { pending.forEach((t) => t.classList.add('is-visible')); pending = []; return; }
+    pending = pending.filter((t) => {
+      if (t.getBoundingClientRect().top < vh * 0.92) {
+        t.classList.add('is-visible');
+        return false;
       }
+      return true;
     });
-  }, { threshold: 0.12 });
-  targets.forEach((t) => io.observe(t));
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check);
+  const iv = setInterval(() => { check(); if (!pending.length) clearInterval(iv); }, 700);
+  check();
 }
