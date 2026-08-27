@@ -6,6 +6,10 @@
 <title>NAPOLI NO KAMA — ナポリの窯タイランド｜日本式窯焼きピザのデリバリー</title>
 <meta name="description" content="24時間かけて仕込んだ生地を、高温の窯で焼き上げて熱いままお届けします。タイ国内5店舗（バンコク・パトゥムターニー・チョンブリ）からLINE・電話・デリバリーアプリでご注文いただけます。">
 <link rel="canonical" href="https://www.napolinokamathailand.com/">
+<link rel="alternate" hreflang="ja" href="https://www.napolinokamathailand.com/">
+<link rel="alternate" hreflang="th" href="https://www.napolinokamathailand.com/th/">
+<link rel="alternate" hreflang="en" href="https://www.napolinokamathailand.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.napolinokamathailand.com/">
 <meta property="og:title" content="NAPOLI NO KAMA — ナポリの窯タイランド">
 <meta property="og:description" content="一枚に、一期一会。24時間かけて仕込んだ生地を、高温の窯で焼き上げて熱いままお届けします。">
 <meta property="og:type" content="website">
@@ -31,9 +35,9 @@
 }
 </script>
 <script>
-// 言語自動振り分けの土台（フェーズ2/3で AVAILABLE に 'en' / 'th' を追加）
+// 言語自動振り分け（2026-08-27にth/enを公開したためAVAILABLEへ追加）
 (function () {
-  var AVAILABLE = ['ja'];
+  var AVAILABLE = ['ja', 'th', 'en'];
   try {
     if (location.pathname !== '/') return;
     if (sessionStorage.getItem('langRedirected')) return;
@@ -68,10 +72,10 @@
       <a href="/menu" class="site-header__link">メニュー</a>
       <a href="/stores" class="site-header__link">お店を探す</a>
     </nav>
-    <div class="lang-switch" aria-label="言語設定">
+    <div class="lang-switch">
       <a href="/" aria-current="true" class="lang-switch__item lang-switch__item--active">JP</a>
-      <span title="ภาษาไทย — 近日公開" class="lang-switch__item lang-switch__item--soon">TH</span>
-      <span title="English — coming soon" class="lang-switch__item lang-switch__item--soon">EN</span>
+      <a href="/th/" class="lang-switch__item">TH</a>
+      <a href="/en/" class="lang-switch__item">EN</a>
     </div>
   </header>
 
@@ -248,9 +252,8 @@
     <div class="site-footer__lang">
       <span class="site-footer__lang-label">Language:</span>
       <a href="/" aria-current="true" class="site-footer__lang-item site-footer__lang-item--active">JP</a>
-      <span title="ภาษาไทย — 近日公開" class="site-footer__lang-item site-footer__lang-item--soon">TH</span>
-      <span title="English — coming soon" class="site-footer__lang-item site-footer__lang-item--soon">EN</span>
-      <span class="site-footer__lang-note">（TH・EN 近日公開）</span>
+      <a href="/th/" class="site-footer__lang-item">TH</a>
+      <a href="/en/" class="site-footer__lang-item">EN</a>
     </div>
   </footer>
 
