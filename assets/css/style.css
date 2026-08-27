@@ -58,7 +58,7 @@ img { max-width: 100%; }
 .page {
   background: var(--paper);
   overflow-x: clip;
-  padding-bottom: 84px; /* 固定バーの逃げ */
+  padding-bottom: 84px; /* 固定バーの逃げ。768px以上では固定バーごと解除する */
   color: var(--ink);
 }
 
@@ -609,6 +609,14 @@ img { max-width: 100%; }
   max-width: 300px; margin-right: auto;
 }
 .fixed-bar__order:hover { color: #FFFFFF; opacity: 0.92; }
+
+/* デスクトップでは固定ボトムバーを出さない（2026-08-27 ちえと指示）。
+   768px以上ではグローバルメニューが1行に収まり「お店を探す」が常に画面上部にあるため、
+   下部の固定CTAは重複になる。モバイルでは注文導線として必須なので残す。 */
+@media (min-width: 768px) {
+  .fixed-bar { display: none; }
+  .page { padding-bottom: 0; }
+}
 
 /* === UTILITIES === */
 
