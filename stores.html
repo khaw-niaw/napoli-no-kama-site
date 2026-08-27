@@ -138,14 +138,16 @@
         <span class="site-header__jp">ナポリの窯タイランド</span>
       </span>
     </a>
-    <nav class="site-header__nav">
+    <nav class="site-header__nav" aria-label="メインメニュー">
+      <a href="/" class="site-header__link">トップ</a>
       <a href="/menu" class="site-header__link">メニュー</a>
-      <div class="lang-switch">
-        <a href="/" aria-current="true" class="lang-switch__item lang-switch__item--active">JP</a>
-        <span title="ภาษาไทย — 近日公開" class="lang-switch__item lang-switch__item--soon">TH</span>
-        <span title="English — coming soon" class="lang-switch__item lang-switch__item--soon">EN</span>
-      </div>
+      <a href="/stores" class="site-header__link site-header__link--active" aria-current="page">お店を探す</a>
     </nav>
+    <div class="lang-switch" aria-label="言語設定">
+      <a href="/" aria-current="true" class="lang-switch__item lang-switch__item--active">JP</a>
+      <span title="ภาษาไทย — 近日公開" class="lang-switch__item lang-switch__item--soon">TH</span>
+      <span title="English — coming soon" class="lang-switch__item lang-switch__item--soon">EN</span>
+    </div>
   </header>
 
   <!-- サブページHero -->
