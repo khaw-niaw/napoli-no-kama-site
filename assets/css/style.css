@@ -137,13 +137,16 @@ img { max-width: 100%; }
 .btn--disabled { border: 1.5px solid var(--line); color: var(--ink-muted); font-size: 14px; font-weight: 500; cursor: default; }
 
 /* --- セクション見出し --- */
+/* 2026-08-26 極小サイズ＋字間ベタ広げ（11px/0.28em）はテンプレート然として見えるため、
+   読める大きさ・自然な字間に変更。英語ラベルのeyebrowはHTML側から削除済み */
 .eyebrow {
-  margin: 0 0 8px;
-  font-size: 11px;
+  margin: 0 0 10px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.04em;
   color: var(--accent-sub);
 }
+.hero .eyebrow { font-size: 17px; margin-bottom: 14px; }
 .section-title {
   margin: 0;
   font-weight: 900;
@@ -322,12 +325,12 @@ img { max-width: 100%; }
   padding: 6px 12px; border-radius: 8px;
   border: none;
 }
-.menu-card__body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 2px; }
-.menu-card__body--featured { padding: 14px 16px 16px; gap: 4px; }
+/* 2026-08-27 商品・カテゴリの英語併記はEN/TH翻訳ページ側で扱う方針となり、日本語版から削除。
+   併記行がなくなったぶん和名と価格の間隔を空ける */
+.menu-card__body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; }
+.menu-card__body--featured { padding: 14px 16px 16px; gap: 8px; }
 .menu-card__jp { font-size: 15px; font-weight: 700; line-height: 1.5; }
 .menu-card__body--featured .menu-card__jp { font-size: 17px; }
-.menu-card__en { font-size: 11px; color: var(--ink-muted); letter-spacing: 0.05em; text-transform: uppercase; }
-.menu-card__body--featured .menu-card__en { font-size: 12px; letter-spacing: 0.06em; }
 .menu-card__price { font-size: 15px; font-weight: 700; color: var(--accent); }
 .menu-card__body--featured .menu-card__price { font-size: 18px; }
 .menu-card__price--rl { font-weight: 500; color: var(--ink); font-size: 14px; margin-top: 4px; }
@@ -361,11 +364,12 @@ img { max-width: 100%; }
   color: var(--ink-muted);
 }
 .craft-list { margin-top: 36px; display: flex; flex-direction: column; }
-.craft-item { display: flex; gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
+.craft-item { display: flex; gap: clamp(20px, 3vw, 32px); padding: 26px 0; border-top: 1px solid var(--line); }
 .craft-item:last-child { border-bottom: 1px solid var(--line); }
 .craft-item__no {
-  font-weight: 700; font-size: 15px; color: var(--accent-sub);
-  flex-shrink: 0; padding-top: 4px;
+  font-weight: 900; font-size: clamp(30px, 5vw, 44px); line-height: 1;
+  color: var(--accent-sub);
+  flex-shrink: 0; padding-top: 0; min-width: 1.6em;
 }
 .craft-item__title { margin: 0 0 8px; font-weight: 700; font-size: 19px; letter-spacing: 0.04em; }
 .craft-item__text { margin: 0; font-size: 16px; line-height: 2; color: var(--ink); }
@@ -391,7 +395,8 @@ img { max-width: 100%; }
 .stores-preview__body { padding: 16px; display: flex; flex-direction: column; gap: 6px; }
 
 /* --- 店舗カード（stores） --- */
-.store-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: var(--ink-muted); }
+/* 店舗番号（01〜05）。英語ラベル用途は2026-08-27に廃止し、番号表示のみ */
+.store-tag { font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink-muted); }
 .store-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--accent-sub); }
 .store-badge::before {
   content: ""; width: 8px; height: 8px; border-radius: 50%;
@@ -489,7 +494,6 @@ img { max-width: 100%; }
   border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
 .menu-cat__title { margin: 0; font-weight: 900; font-size: clamp(21px, 4vw, 28px); letter-spacing: 0.03em; }
-.menu-cat__en { font-size: 12px; letter-spacing: 0.18em; color: var(--ink-muted); font-weight: 700; }
 .menu-cat__grid {
   margin-top: 18px;
   display: grid;
