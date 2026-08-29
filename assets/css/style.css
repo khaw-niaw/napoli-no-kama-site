@@ -414,24 +414,56 @@ img { max-width: 100%; }
 .craft-item__text { margin: 0; font-size: 16px; line-height: 2; color: var(--ink); }
 
 /* --- 店舗プレビュー（トップ） --- */
-.stores-preview {
+/* トップの店舗プレビュー：5店舗すべてを写真付きで並べる（2026-08-28刷新）。
+   旧版はパタヤ店1枚＋「5店舗展開中」の数字だったが、
+   バンコクの読者が自分の店を見つけられず離脱する懸念があるため全店表示に変更。
+   並び順はバンコク→パトゥムターニー→チョンブリ＝人口の多い順で、
+   横スクロール時に最初に見えるのがバンコク2店になる。 */
+.stores-strip {
   margin-top: 28px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  gap: 14px;
-  align-items: stretch;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(172px, 1fr);
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
-.stores-preview__stat {
-  background: #FFFFFF; border-radius: 12px;
-  padding: clamp(24px, 4vw, 36px);
-  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+.stores-strip__card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  color: var(--ink);
 }
-.stores-preview__number { font-weight: 900; font-size: clamp(48px, 9vw, 72px); line-height: 1; }
-.stores-preview__number small { font-size: 19px; font-weight: 700; margin-left: 6px; }
-.stores-preview__sub { font-size: 14px; line-height: 1.9; color: var(--ink-muted); }
-.stores-preview__card { background: #FFFFFF; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
-.stores-preview__map { aspect-ratio: 16 / 6; }
-.stores-preview__body { padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.stores-strip__card:hover { color: var(--ink); }
+.stores-strip__photo { aspect-ratio: 4 / 3; overflow: hidden; background: var(--panel); }
+.stores-strip__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.stores-strip__body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 3px; }
+.stores-strip__name { font-size: 15px; font-weight: 700; line-height: 1.5; }
+.stores-strip__area { font-size: 13px; color: var(--ink-muted); }
+.stores-strip__badge {
+  margin-top: 5px;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 700; color: var(--accent-sub);
+}
+.stores-strip__badge::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-sub); flex-shrink: 0;
+}
+/* 5枚が並びきる幅では横スクロールをやめて均等グリッドにする */
+@media (min-width: 992px) {
+  .stores-strip {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+}
 
 /* --- 店舗カード（stores） --- */
 /* 店舗番号（01〜05）。英語ラベル用途は2026-08-27に廃止し、番号表示のみ */
