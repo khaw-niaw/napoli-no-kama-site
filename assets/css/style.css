@@ -688,3 +688,31 @@ img { max-width: 100%; }
 .site-footer__legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin-top: 14px; }
 .site-footer__legal-link { font-size: 13px; color: var(--ink-muted); text-decoration: underline; text-underline-offset: 3px; }
 .site-footer__legal-link:hover { color: var(--accent-sub); }
+
+/* --- よくある質問 2026-08-28新設 --- */
+/* アコーディオンにせず全問を開いた状態で出す。
+   検索から来た人がページ内検索で目的の答えに辿り着けるようにするため。 */
+.faq {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(48px, 7vw, 88px);
+}
+.faq__item {
+  max-width: 42em;
+  padding: clamp(20px, 3vw, 28px) 0;
+  border-top: 1px solid var(--line);
+}
+.faq__item:first-child { border-top: none; padding-top: 0; }
+.faq__q {
+  margin: 0 0 10px;
+  font-size: clamp(17px, 2.4vw, 21px);
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+.faq__a {
+  margin: 0;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--ink-muted);
+}
